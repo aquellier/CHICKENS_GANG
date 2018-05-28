@@ -1,2 +1,4 @@
-<h1>ChickensGangs#new</h1>
-<p>Find me in app/views/chickens_gangs/new.html.erb</p>
+<h1>New ChickensGangs</h1>
+
+<%= render "form", chickens_gang: @chickens_gang %>
+<%= link_to "Back", chickens_gangs_path, class: "btn btn-danger" %>
