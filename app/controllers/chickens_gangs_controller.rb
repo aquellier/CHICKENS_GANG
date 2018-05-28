@@ -6,9 +6,18 @@ class ChickensGangsController < ApplicationController
   end
 
   def new
+    @chickens_gang = ChickensGang.new
   end
 
   def create
+    # add the things in here
+    @chickens_gang = ChickensGang.new(chickens_gang_params)
+    if @chickens_gang.save
+      redirect_to
+    else
+      render :new
+    end
+    raise
   end
 
   def edit
@@ -18,5 +27,11 @@ class ChickensGangsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def chickens_gang_params
+    params.require(:chickens_gang).permit(:gang_nane, :breed, :capacity, :year_of_birth, :price, :photo )
   end
 end
