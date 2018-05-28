@@ -5,7 +5,7 @@ class CreateChickensGangs < ActiveRecord::Migration[5.2]
       t.string :gang_name, null: false
       t.integer :capacity, null: false
       t.string :photo
-      t.integer :year_of_birth, null: false
+      t.integer :year_of_birth
       t.integer :price, null: false
       t.boolean :availability, default: true
       t.timestamps
