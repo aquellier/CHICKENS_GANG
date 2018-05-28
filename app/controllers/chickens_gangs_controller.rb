@@ -13,11 +13,11 @@ class ChickensGangsController < ApplicationController
     # add the things in here
     @chickens_gang = ChickensGang.new(chickens_gang_params)
     if @chickens_gang.save
-      redirect_to
+      redirect_to chickens_gangs_path
     else
       render :new
     end
-    raise
+    #raise
   end
 
   def edit
@@ -32,6 +32,6 @@ class ChickensGangsController < ApplicationController
   private
 
   def chickens_gang_params
-    params.require(:chickens_gang).permit(:gang_nane, :breed, :capacity, :year_of_birth, :price, :photo )
+    params.require(:chickens_gang).permit(:gang_name, :breed, :capacity, :year_of_birth, :price, :photo )
   end
 end
