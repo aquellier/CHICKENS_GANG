@@ -1,2 +1,22 @@
-<h1>ChickensGangs#index</h1>
-<p>Find me in app/views/chickens_gangs/index.html.erb</p>
+<div class="container">
+<h1>Available chickens</h1>
+
+<p> Please click on the chicken for more information.</p>
+
+  <div class="row">
+      <% @chickensgangs.each do |chickensgang| %>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0yiRaRpABimHCHMw4cXVZKYwK0YjRhGJydn7hzi12WaM_4XknfQ');">
+          <div class="card-category"><%= chickensgang.breed %></div>
+          <div class="card-description">
+            <h2><%= chickensgang.gang_name %></h2>
+            <p>Capacity: <%= chickensgang.capacity %></p>
+            <p>Price: <%= chickensgang.price %></p>
+          </div>
+          <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+          <a class="card-link" href="#" ></a>
+        </div>
+    </div>
+      <% end %>
+  </div>
+</div>
