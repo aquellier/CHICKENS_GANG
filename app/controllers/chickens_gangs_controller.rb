@@ -1,5 +1,6 @@
 class ChickensGangsController < ApplicationController
   def index
+    @chickensgangs = ChickensGang.all
   end
 
   def show
