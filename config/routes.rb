@@ -3,9 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :chickens_gangs do
     member do
-      get "booking", to: "chickens_gangs#booking"
+      resources :rentings, only: [:show, :new, :create]
     end
   end
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

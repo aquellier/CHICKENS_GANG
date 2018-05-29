@@ -1,5 +1,5 @@
 class ChickensGangsController < ApplicationController
-  before_action :set_chickens_gang, only: [:show, :destroy, :edit, :update, :booking]
+  before_action :set_chickens_gang, only: [:show, :destroy, :edit, :update, :renting]
   skip_before_action :authenticate_user!, only: [ :index, :show]
 
 
@@ -8,6 +8,7 @@ class ChickensGangsController < ApplicationController
   end
 
   def show
+    @renting = Renting.new
   end
 
   def new
@@ -42,7 +43,7 @@ class ChickensGangsController < ApplicationController
     redirect_to chickens_gangs_path
   end
 
-  def booking
+  def renting
   end
 
 private

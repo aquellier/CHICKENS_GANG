@@ -12,9 +12,7 @@
   <% end %>
   <p> Year of birth: <%= @chickens_gang.year_of_birth %></p>
   <p> Price: <%= @chickens_gang.price %></p>
-  <p> Available?:  <% if @chickens_gang.availability %> Yes </p> <% else %>
-No </p>
-<% end%>
+
 
 <button>
 <%= link_to "Back to Chickens Gangs",chickens_gangs_path %>
@@ -28,6 +26,6 @@ No </p>
 <%= link_to "Delete",@chickens_gang, method: :delete, data: {confirm: 'Are you sure?'} %>
 </button>
 
-<%= link_to "Book Chicken Gang", booking_chickens_gang_path(@chickens_gang), class: "btn btn-danger"  %>
+<%= link_to "Book Chicken Gang", new_renting_path(@chickens_gang), class: "btn btn-danger"  %>
 
 </div>
