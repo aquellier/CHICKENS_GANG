@@ -56,4 +56,5 @@ private
   def chickens_gang_params
     params.require(:chickens_gang).permit(:gang_name, :breed, :capacity, :year_of_birth, :price, :photo )
   end
+
 end
