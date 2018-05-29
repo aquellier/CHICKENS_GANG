@@ -5,7 +5,8 @@ class ChickensGangPolicy < ApplicationPolicy
     end
 
     def show?
-      user == record.owner
+      true
+      # user == record.owner
     end
 
     # def new?
@@ -26,6 +27,10 @@ class ChickensGangPolicy < ApplicationPolicy
 
     def destroy
       user_is_owner?
+    end
+
+    def booking?
+      true
     end
 
     private
