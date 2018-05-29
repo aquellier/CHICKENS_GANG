@@ -1,4 +1,6 @@
-<h1>New Review</h1>
+<div class="container">
+  <h1>New Review</h1>
+  <%= render "form", chickens_gang: @chickens_gang, review: @review %>
+  <%= link_to "Back", chickens_gangs_path, class: "btn btn-danger" %>
+</div>
 
-<%= render "form", chickens_gang: @chickens_gang, review: @review %>
-<%= link_to "Back", chickens_gangs_path, class: "btn btn-danger" %>
