@@ -53,7 +53,4 @@ class ChickensGangsController < ApplicationController
     params.require(:chickens_gang).permit(:gang_name, :breed, :capacity, :year_of_birth, :price, :photo )
   end
 
-  def set_chickens_gang
-    @chickens_gang = ChickensGang.find(params[:id])
-  end
 end
