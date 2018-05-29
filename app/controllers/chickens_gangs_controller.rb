@@ -1,6 +1,7 @@
 class ChickensGangsController < ApplicationController
-  before_action :set_chickens_gang, except: [ :index, :new, :create]
+  before_action :set_chickens_gang, only: [:show, :destroy, :edit, :update]
   skip_before_action :authenticate_user!, only: [ :index, :show]
+
 
   def index
     @chickens_gangs = policy_scope(ChickensGang)
@@ -32,9 +33,13 @@ class ChickensGangsController < ApplicationController
   end
 
   def update
+    @chickens_gang.update(chickens_gang_params)
+    redirect_to chickens_gang_path(@chickens_gang)
   end
 
   def destroy
+    @chickens_gang.destroy
+    redirect_to chickens_gangs_path
   end
 
   private
@@ -46,5 +51,9 @@ class ChickensGangsController < ApplicationController
 
   def chickens_gang_params
     params.require(:chickens_gang).permit(:gang_name, :breed, :capacity, :year_of_birth, :price, :photo )
+  end
+
+  def set_chickens_gang
+    @chickens_gang = ChickensGang.find(params[:id])
   end
 end
