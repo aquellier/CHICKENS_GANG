@@ -10,9 +10,9 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
-    <% #unless action_name == "home" %>
+    <% unless action_name == "home" %>
       <%= render 'shared/navbar' %>
-    <% #end %>
+    <% end %>
     <%= yield %>
     <%= render 'shared/footer' %>
     <p class="notice"><%= notice %></p>

@@ -1,1 +1,46 @@
 // Specific CSS for your home-page
+
+.home-cards {
+  display: flex;
+  justify-content: space-around;
+}
+.home-card {
+  height: 500px;
+  width: 300px;
+  background-position: center;
+  color: white;
+  position: relative;
+  margin-bottom: 10px;
+  background-image: center;
+  background-size: cover;
+}
+
+.card1 {
+  border-top: 5px solid $yellow;
+  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url('https://s22.postimg.cc/5ldtpgvap/farmer.png');
+  &:hover {
+    border-bottom: 100px solid $yellow;
+    transition: 0.5s ease;
+  }
+}
+.card2 {
+  border-top: 5px solid $green;
+  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url('https://s22.postimg.cc/hn97jf1wh/chicken1.jpg');
+  &:hover {
+  border-bottom: 100px solid $green;
+  transition: 0.5s ease;
+  }
+}
+.card3 {
+  border-top: 5px solid $blue;
+  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url('https://s22.postimg.cc/uddfwvk8x/eggs.png');
+  &:hover {
+  border-bottom: 100px solid $blue;
+  transition: 0.5s ease;
+  }
+}
+
+.container-home h2 {
+  margin-top: 25px;
+}
+
