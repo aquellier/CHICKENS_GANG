@@ -1,4 +1,6 @@
 class ChickensGang < ApplicationRecord
+  has_many :rentings, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   has_many :users, through: :rentings
 
   validates :gang_name, presence: true, uniqueness: true
