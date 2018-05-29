@@ -1,25 +1,30 @@
 class ChickensGangsController < ApplicationController
+  before_action :set_chickens_gang, except: [ :index, :new, :create]
   skip_before_action :authenticate_user!, only: [ :index, :show]
+
   def index
-    @chickens_gangs = ChickensGang.all
+    @chickens_gangs = policy_scope(ChickensGang)
   end
 
   def show
-    @chickens_gang = ChickensGang.find(params[:id])
   end
 
   def new
     @chickens_gang = ChickensGang.new
+    authorize @chickens_gang
   end
 
   def create
     # add the things in here
     @chickens_gang = ChickensGang.new(chickens_gang_params)
+    @chickens_gang = current_user.chickens_gangs.new(chickens_gang_params)
+    authorize @chickens_gang
     if @chickens_gang.save
       redirect_to chickens_gangs_path
     else
       render :new
     end
+
     #raise
   end
 
@@ -33,6 +38,11 @@ class ChickensGangsController < ApplicationController
   end
 
   private
+
+  def set_chickens_gang
+    @chickens_gang = ChickensGang.find(params[:id])
+    authorize @chickens_gang
+  end
 
   def chickens_gang_params
     params.require(:chickens_gang).permit(:gang_name, :breed, :capacity, :year_of_birth, :price, :photo )

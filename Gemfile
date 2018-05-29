@@ -31,3 +31,6 @@ end
 
 # Add gem devise
 gem 'devise'
+
+# Add gem pundit for authorization
+gem 'pundit'
