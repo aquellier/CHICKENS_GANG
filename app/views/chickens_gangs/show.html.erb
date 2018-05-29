@@ -5,7 +5,9 @@
   <p> Breed: <%= @chickens_gang.breed %></p>
   <p> Gang name: <%= @chickens_gang.gang_name %></p>
   <p> Capacity: <%= @chickens_gang.capacity %></p>
-  <p> Photo: <%= @chickens_gang.photo %></p>
+  <% if @chickens_gang.photo.present? %>
+    <p> Photo: <%= cl_image_tag @chickens_gang.photo, height: 200, crop: :fill %></p>
+  <% end %>
   <p> Year of birth: <%= @chickens_gang.year_of_birth %></p>
   <p> Price: <%= @chickens_gang.price %></p>
   <p> Available?:  <% if @chickens_gang.availability %> Yes </p> <% else %>
