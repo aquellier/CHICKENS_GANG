@@ -1,0 +1,35 @@
+.banner {
+  color: white;
+  text-align: center;
+  height: calc(100vh - 50px);
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: baseline;
+}
+
+.banner h1 {
+  font-size: 60px;
+  font-weight: bold;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+}
+.banner p {
+  font-size: 25px;
+  font-weight: lighter;
+  color: rgb(255, 255, 255);
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+
+.rotate {
+  // The rotation will be completed in 120s and will keep going infinitely
+  animation: spin 120s infinite linear;
+}
+@keyframes spin {
+  // The total rotation is 360 deg, meaning it'll take 120 sec for a full round to complete
+  100% {
+      transform:rotate(360deg);
+  }
+}
