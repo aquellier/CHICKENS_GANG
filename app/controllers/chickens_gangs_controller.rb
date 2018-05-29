@@ -1,5 +1,6 @@
 class ChickensGangsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show]
+
   def index
     @chickens_gangs = ChickensGang.all
   end
@@ -30,6 +31,8 @@ class ChickensGangsController < ApplicationController
   end
 
   def destroy
+    @chickens_gang = ChickensGang.find(params[:id])
+    @chicekns_gang.delete
   end
 
   private
