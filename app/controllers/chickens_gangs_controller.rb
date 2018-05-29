@@ -1,10 +1,11 @@
 class ChickensGangsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show]
   def index
-    @chickensgangs = ChickensGang.all
+    @chickens_gangs = ChickensGang.all
   end
 
   def show
+    @chickens_gang = ChickensGang.find(params[:id])
   end
 
   def new

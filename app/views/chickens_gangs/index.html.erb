@@ -4,7 +4,7 @@
 <p> Please click on the chicken for more information.</p>
 
   <div class="row">
-      <% @chickensgangs.each do |chickensgang| %>
+      <% @chickens_gangs.each do |chickensgang| %>
         <div class="col-xs-12 col-sm-4">
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0yiRaRpABimHCHMw4cXVZKYwK0YjRhGJydn7hzi12WaM_4XknfQ');">
           <div class="card-category"><%= chickensgang.breed %></div>
@@ -14,9 +14,15 @@
             <p>Price: <%= chickensgang.price %></p>
           </div>
           <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-          <a class="card-link" href="#" ></a>
+          <div class="link">
+          <%= link_to 'View more information', chickens_gang_path(chickensgang) %>
+          </div>
         </div>
     </div>
       <% end %>
   </div>
+
+  <button>
+<%= link_to "Add a new chicken gang",new_chickens_gang_path %>
+</button>
 </div>
