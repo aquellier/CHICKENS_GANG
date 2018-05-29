@@ -1,6 +1,6 @@
 class ChickensGangsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show]
-  before_action :set_chickens_gang, only: [:show, :destroy]
+  before_action :set_chickens_gang, only: [:show, :destroy, :edit, :update]
 
 
   def index
@@ -29,6 +29,8 @@ class ChickensGangsController < ApplicationController
   end
 
   def update
+    @chickens_gang.update(chickens_gang_params)
+    redirect_to chickens_gang_path(@chickens_gang)
   end
 
   def destroy
