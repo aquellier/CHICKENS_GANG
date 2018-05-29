@@ -15,8 +15,15 @@ No </p>
 <% end%>
 
 <button>
-<%= link_to "Back to chickens",chickens_gangs_path %>
+<%= link_to "Back to Chickens Gangs",chickens_gangs_path %>
 </button>
 
+<button>
+<%= link_to "Edit",edit_chickens_gang_path(@chickens_gang) %>
+</button>
+
+<button>
+<%= link_to "Delete",@chickens_gang, method: :delete, data: {confirm: 'Are you sure?'} %>
+</button>
 
 </div>
