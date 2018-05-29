@@ -28,7 +28,12 @@ No </p>
 <%= link_to "Delete",@chickens_gang, method: :delete, data: {confirm: 'Are you sure?'} %>
 </button>
 
+
 <button>
 <%= link_to "Add review",new_chickens_gang_review_path(@chickens_gang) %>
 </button>
+
+<%= link_to "Book Chicken Gang", booking_chickens_gang_path(@chickens_gang), class: "btn btn-danger"  %>
+
+
 </div>
