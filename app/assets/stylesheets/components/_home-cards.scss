@@ -1,4 +1,8 @@
-// Specific CSS for your home-page
+.container-home-cards {
+  height: 100vh;
+  padding: 20px;
+  margin: 40px;
+}
 
 .home-cards {
   display: flex;
@@ -40,8 +44,17 @@
   }
 }
 
-.container-home h2 {
-  margin-top: 25px;
+.home-separator1 {
+  background-color: $yellow;
+  height: 40vh;
 }
 
+.home-separator2 {
+  background-color: $green;
+  height: 40vh;
+}
 
+.home-separator3 {
+  background-color: $blue;
+  height: 40vh;
+}
