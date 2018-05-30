@@ -1,7 +1,6 @@
 class ChickensGangsController < ApplicationController
-  before_action :set_chickens_gang, only: [:show, :destroy, :edit, :update, :booking]
+  before_action :set_chickens_gang, only: [:show, :destroy, :edit, :update, :renting]
   skip_before_action :authenticate_user!, only: [ :index, :show]
-
 
   def index
     @chickens_gangs = policy_scope(ChickensGang)
@@ -17,7 +16,7 @@ class ChickensGangsController < ApplicationController
   end
 
   def show
-
+    @renting = Renting.new
   end
 
   def new
@@ -50,9 +49,6 @@ class ChickensGangsController < ApplicationController
   def destroy
     @chickens_gang.destroy
     redirect_to chickens_gangs_path
-  end
-
-  def booking
   end
 
 private

@@ -12,26 +12,27 @@
   <% end %>
   <p> Year of birth: <%= @chickens_gang.year_of_birth %></p>
   <p> Price: <%= @chickens_gang.price %></p>
-  <p> Available?:  <% if @chickens_gang.availability %> Yes </p> <% else %>
-No </p>
-<% end%>
+
 
 <p> Available?:  <% if @chickens_gang.availability %> Yes </p> <% else %>
 No </p> <% end %>
 
 <h4>Chickens Gang Reviews</h4>
 
-<% average = [] %>
-<% @chickens_gang.reviews.each do |review| %>
-  <% average << review.rating  %>
+<% if !@chickens_gang.reviews.empty?  %>
+  <% average = [] %>
+  <% @chickens_gang.reviews.each do |review| %>
+    <% average << review.rating  %>
+  <% end %>
+  <p> Average rating: <%= (average.reduce(:+)/average.size.to_f).round(1)  %> </p>
+  <ul>
+    <% @chickens_gang.reviews.each do |review| %>
+      <li> Comment: <%=review.content%>, Rating: <%=review.rating%> </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>This Chicken Gang has no review yet. </p>
 <% end %>
-<p> Average rating: <%= (average.reduce(:+)/average.size.to_f).round(1)  %> </p>
-
-<ul>
-<% @chickens_gang.reviews.each do |review| %>
-  <li> Comment: <%=review.content%>, Rating: <%=review.rating%> </li>
-<% end %>
-</ul>
 
 <button>
   <%= link_to "Back to Chickens Gangs",chickens_gangs_path %>
@@ -50,10 +51,10 @@ No </p> <% end %>
 
 
 <button>
-<%= link_to "Add review",new_chickens_gang_review_path(@chickens_gang) %>
+  <%= link_to "Add review",new_chickens_gang_review_path(@chickens_gang) %>
 </button>
 
-<%= link_to "Book Chicken Gang", booking_chickens_gang_path(@chickens_gang), class: "btn btn-danger"  %>
+<%= link_to "Book Chicken Gang", new_chickens_gang_renting_path(@chickens_gang), class: "btn btn-danger"  %>
 
 
 </div>
