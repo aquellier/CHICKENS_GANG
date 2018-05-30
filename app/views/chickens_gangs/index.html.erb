@@ -32,9 +32,9 @@
         <% end %>
       </div>
 
-      <button>
-        <%= link_to "Add a new chicken gang",new_chickens_gang_path %>
-      </button>
+
+        <%= link_to "Add a new chicken gang",new_chickens_gang_path, class: "btn btn-danger"%>
+
     </div>
   <div id="map">
     data-markers="<%= @markers.to_json %>"
