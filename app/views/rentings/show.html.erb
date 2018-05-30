@@ -1,0 +1,10 @@
+<div class="container">
+  <h3>Thank you!</h3>
+  <p>You have just booked <%= @chickens_gang.gang_name %></p>
+
+  <h4>Details:</h4>
+  <p>Duration: <%= @renting.start_date.strftime('%d %b %Y') %> to
+     <%= @renting.end_date.strftime('%d %b %Y') %></p>
+  <p>Price: <%= @chickens_gang.price %>€</p>
+
+</div>
