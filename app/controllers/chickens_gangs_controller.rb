@@ -5,6 +5,7 @@ class ChickensGangsController < ApplicationController
 
   def index
     @chickens_gangs = policy_scope(ChickensGang)
+
   end
 
   def show
