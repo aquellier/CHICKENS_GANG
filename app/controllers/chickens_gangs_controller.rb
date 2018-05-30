@@ -4,6 +4,15 @@ class ChickensGangsController < ApplicationController
 
   def index
     @chickens_gangs = policy_scope(ChickensGang)
+    @chickens_gangs = @chickens_gangs.where.not(latitude: nil, longitude: nil)
+
+    @markers = @chickens_gangs.map do |chickens_gang|
+      {
+        lat: chickens_gang.latitude,
+        lng: chickens_gang.longitude,
+        # infoWindow: { content: render_to_string(partial: "/chickens_gangs/map_box", locals: { chickens_gang: chickens_gang }) }
+      }
+    end
   end
 
   def show
@@ -50,7 +59,7 @@ private
   end
 
   def chickens_gang_params
-    params.require(:chickens_gang).permit(:gang_name, :breed, :capacity, :year_of_birth, :price, :photo )
+    params.require(:chickens_gang).permit(:gang_name, :address, :breed, :capacity, :year_of_birth, :price, :photo )
   end
 
 end
