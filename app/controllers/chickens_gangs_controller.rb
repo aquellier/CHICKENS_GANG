@@ -2,7 +2,6 @@ class ChickensGangsController < ApplicationController
   before_action :set_chickens_gang, only: [:show, :destroy, :edit, :update, :renting]
   skip_before_action :authenticate_user!, only: [ :index, :show]
 
-
   def index
     @chickens_gangs = policy_scope(ChickensGang)
   end
@@ -43,9 +42,6 @@ class ChickensGangsController < ApplicationController
     redirect_to chickens_gangs_path
   end
 
-  def renting
-  end
-
 private
 
   def set_chickens_gang
@@ -56,4 +52,5 @@ private
   def chickens_gang_params
     params.require(:chickens_gang).permit(:gang_name, :breed, :capacity, :year_of_birth, :price, :photo )
   end
+
 end

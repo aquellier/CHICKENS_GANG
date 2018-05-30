@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :chickens_gangs do
     resources :rentings, only: [:show, :new, :create]
+    resources :reviews, only: [:new, :create]
   end
 end
