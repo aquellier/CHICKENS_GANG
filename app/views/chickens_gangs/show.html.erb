@@ -11,10 +11,10 @@
   <p>Photo: <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0yiRaRpABimHCHMw4cXVZKYwK0YjRhGJydn7hzi12WaM_4XknfQ' %></p>
   <% end %>
   <p> Year of birth: <%= @chickens_gang.year_of_birth %></p>
-  <p> Price: <%= @chickens_gang.price %></p>
+  <p> Price: <%= @chickens_gang.price %>€/day</p>
 
 
-<p> Available?:  <% if @chickens_gang.availability %> Yes </p> <% else %>
+<p> Available:  <% if @chickens_gang.availability %> Yes </p> <% else %>
 No </p> <% end %>
 
 <h4>Chickens Gang Reviews</h4>
@@ -34,25 +34,25 @@ No </p> <% end %>
   <p>This Chicken Gang has no review yet. </p>
 <% end %>
 
-<button>
-  <%= link_to "Back to Chickens Gangs",chickens_gangs_path %>
-</button>
+
+  <%= link_to "Back to Chickens Gangs",chickens_gangs_path, class: "btn btn-danger" %>
+
 
 <% if current_user == @chickens_gang.owner  %>
-<button>
-  <%= link_to "Edit",edit_chickens_gang_path(@chickens_gang) %>
-</button>
 
-<button>
-  <%= link_to "Delete",@chickens_gang, method: :delete, data: {confirm: 'Are you sure?'} %>
-</button>
+  <%= link_to "Edit",edit_chickens_gang_path(@chickens_gang), class: "btn btn-danger" %>
+
+
+
+  <%= link_to "Delete",@chickens_gang, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
+
 <% end %>
 
 
 
-<button>
-  <%= link_to "Add review",new_chickens_gang_review_path(@chickens_gang) %>
-</button>
+
+  <%= link_to "Add review",new_chickens_gang_review_path(@chickens_gang), class: "btn btn-danger"%>
+
 
 <%= link_to "Book Chicken Gang", new_chickens_gang_renting_path(@chickens_gang), class: "btn btn-danger"  %>
 
