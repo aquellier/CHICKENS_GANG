@@ -4,7 +4,30 @@
 
   <h4>Details:</h4>
   <p>Duration: <%= @renting.start_date.strftime('%d %b %Y') %> to
-     <%= @renting.end_date.strftime('%d %b %Y') %></p>
-  <p>Price: <%= @chickens_gang.price %>€</p>
+               <%= @renting.end_date.strftime('%d %b %Y') %></p>
+
+
+  <% start_year =  @renting.start_date.strftime('%Y').to_i%>
+  <% start_month =  @renting.start_date.strftime('%m').to_i%>
+  <% start_day =  @renting.start_date.strftime('%d').to_i%>
+
+  <% end_year =  @renting.end_date.strftime('%Y').to_i%>
+  <% end_month =  @renting.end_date.strftime('%m').to_i%>
+  <% end_day =  @renting.end_date.strftime('%d').to_i%>
+
+  <% days = Date.new(end_year, end_month, end_day) -
+            Date.new(start_year, start_month, start_day) %>
+
+
+  <p>Total price: <%= @chickens_gang.price * days.to_i %>€</p>
+
+
+  <button>
+    <%= link_to "Book again", new_chickens_gang_renting_path(@chickens_gang) %>
+  </button>
+
+  <button>
+    <%= link_to "Back to all Chicken Gangs",chickens_gangs_path %>
+  </button>
 
 </div>
