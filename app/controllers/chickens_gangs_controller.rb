@@ -1,5 +1,5 @@
 class ChickensGangsController < ApplicationController
-  before_action :set_chickens_gang, only: [:show, :destroy, :edit, :update]
+  before_action :set_chickens_gang, only: [:show, :destroy, :edit, :update, :booking]
   skip_before_action :authenticate_user!, only: [ :index, :show]
 
 
@@ -8,6 +8,7 @@ class ChickensGangsController < ApplicationController
   end
 
   def show
+
   end
 
   def new
@@ -42,7 +43,10 @@ class ChickensGangsController < ApplicationController
     redirect_to chickens_gangs_path
   end
 
-  private
+  def booking
+  end
+
+private
 
   def set_chickens_gang
     @chickens_gang = ChickensGang.find(params[:id])
@@ -53,7 +57,4 @@ class ChickensGangsController < ApplicationController
     params.require(:chickens_gang).permit(:gang_name, :breed, :capacity, :year_of_birth, :price, :photo )
   end
 
-  def set_chickens_gang
-    @chickens_gang = ChickensGang.find(params[:id])
-  end
 end

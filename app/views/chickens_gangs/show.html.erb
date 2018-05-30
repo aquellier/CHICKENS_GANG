@@ -6,9 +6,9 @@
   <p> Gang name: <%= @chickens_gang.gang_name %></p>
   <p> Capacity: <%= @chickens_gang.capacity %></p>
   <% if @chickens_gang.photo.present? %>
-    <p>Photo: <%= cl_image_tag @chickens_gang.photo, height: 200, crop: :fill %></p>
+  <p>Photo: <%= cl_image_tag @chickens_gang.photo, height: 200, crop: :fill %></p>
   <% else %>
-    <p>Photo: <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0yiRaRpABimHCHMw4cXVZKYwK0YjRhGJydn7hzi12WaM_4XknfQ' %></p>
+  <p>Photo: <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0yiRaRpABimHCHMw4cXVZKYwK0YjRhGJydn7hzi12WaM_4XknfQ' %></p>
   <% end %>
   <p> Year of birth: <%= @chickens_gang.year_of_birth %></p>
   <p> Price: <%= @chickens_gang.price %></p>
@@ -16,16 +16,46 @@
 No </p>
 <% end%>
 
+<p> Available?:  <% if @chickens_gang.availability %> Yes </p> <% else %>
+No </p> <% end %>
+
+<h4>Chickens Gang Reviews</h4>
+
+<% average = [] %>
+<% @chickens_gang.reviews.each do |review| %>
+  <% average << review.rating  %>
+<% end %>
+<p> Average rating: <%= (average.reduce(:+)/average.size.to_f).round(1)  %> </p>
+
+<ul>
+<% @chickens_gang.reviews.each do |review| %>
+  <li> Comment: <%=review.content%>, Rating: <%=review.rating%> </li>
+<% end %>
+</ul>
+
 <button>
-<%= link_to "Back to Chickens Gangs",chickens_gangs_path %>
+  <%= link_to "Back to Chickens Gangs",chickens_gangs_path %>
+</button>
+
+<% if current_user == @chickens_gang.owner  %>
+<button>
+  <%= link_to "Edit",edit_chickens_gang_path(@chickens_gang) %>
 </button>
 
 <button>
-<%= link_to "Edit",edit_chickens_gang_path(@chickens_gang) %>
+  <%= link_to "Delete",@chickens_gang, method: :delete, data: {confirm: 'Are you sure?'} %>
 </button>
+<% end %>
+
+
 
 <button>
-<%= link_to "Delete",@chickens_gang, method: :delete, data: {confirm: 'Are you sure?'} %>
+<%= link_to "Add review",new_chickens_gang_review_path(@chickens_gang) %>
 </button>
+
+<%= link_to "Book Chicken Gang", booking_chickens_gang_path(@chickens_gang), class: "btn btn-danger"  %>
+
 
 </div>
+
+
