@@ -1,6 +1,6 @@
 function autocomplete() {
   document.addEventListener("DOMContentLoaded", function() {
-    var chickensgangAddress = document.getElementById('chickensgang_address');
+    var chickensgangAddress = document.getElementById('chickens_gang_address');
 
     if (chickensgangAddress) {
       var autocomplete = new google.maps.places.Autocomplete(chickensgangAddress, { types: [ 'geocode' ] });

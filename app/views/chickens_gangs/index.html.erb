@@ -5,7 +5,7 @@
     <p> Please click on a Chicken Gang for more information.</p>
     <div class="row">
       <% @chickens_gangs.each do |chickensgang| %>
-      <div class="col-xs-12 col-sm-4">
+      <div class="col-xs-12 col-sm-6">
 
         <% if !chickensgang.photo? %>
           <div class="card"
@@ -36,8 +36,7 @@
         <%= link_to "Add a new chicken gang",new_chickens_gang_path %>
       </button>
     </div>
-  <div id="map">
-    data-markers="<%= @markers.to_json %>"
+  <div id="map" data-markers="<%= @markers.to_json %>">
   </div>
 
   </div>
