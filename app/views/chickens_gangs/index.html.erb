@@ -1,43 +1,18 @@
 <div class="container">
-  <div class="results-container">
 
-    <h1>Available Chickens Gangs</h1>
-    <p> Please click on a Chicken Gang for more information.</p>
+<div class="results-container">
+  <h1>Available Chickens Gangs</h1>
+
+  <p> Please click on a Chicken Gang for more information.</p>
+
     <div class="row">
       <% @chickens_gangs.each do |chickensgang| %>
-      <div class="col-xs-12 col-sm-6">
 
-        <% if !chickensgang.photo? %>
-          <div class="card"
-          style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-          url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0yiRaRpABimHCHMw4cXVZKYwK0YjRhGJydn7hzi12WaM_4XknfQ')">
-          <% else %>
-          <div class="card"
-          style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-          url('<%= cl_image_path chickensgang.photo, height: 175, crop: :fill %>')">
-          <% end %>
-
-            <div class="card-category"><%= chickensgang.breed %></div>
-            <div class="card-description">
-              <h2><%= chickensgang.gang_name %></h2>
-              <p>Capacity: <%= chickensgang.capacity %></p>
-              <p>Price: <%= chickensgang.price %>€/day</p>
-            </div>
-            <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-            <div class="link">
-              <%= link_to 'View more information', chickens_gang_path(chickensgang) %>
-            </div>
-          </div>
-          </div>
-        <% end %>
-      </div>
-
-
-        <%= link_to "Add a new chicken gang",new_chickens_gang_path, class: "btn btn-danger"%>
-
+      <%= render "card", chickensgang: chickensgang %>
+      <% end %>
     </div>
+ </div>
   <div id="map" data-markers="<%= @markers.to_json %>">
-
   </div>
-  </div>
+  
 </div>
