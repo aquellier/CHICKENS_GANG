@@ -8,7 +8,6 @@ class ChickensGangsController < ApplicationController
   end
 
   def show
-
   end
 
   def new
