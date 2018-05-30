@@ -1,7 +1,25 @@
 <div class="banner" style="background-image: url('https://s33.postimg.cc/uz9f6k6sv/background_chicken2.png');">
   <div>
     <h1>GANGS OF CHICKENS</h1>
-    <p>Get fresh eggs, save the world.</p>
-    <%= link_to "Get to know all the chickens", chickens_gangs_path %>
+    <p>
+      <span id="banner-typed-text"></span>
+    </p>
+    <%= link_to "Discover Chickens", chickens_gangs_path, class: 'btn btn-success' %>
+      <a href="#about" style="transition: all 1s ease"><h3><i class="fas fa-arrow-circle-down"></i></h3></a>
   </div>
 </div>
+
+
+<%= render 'about' %>
+
+<div class="home-separator1"> <h2>This is about chickens and eggs of course, but this is far more than this.</h2></div>
+
+<%= render 'testimonials' %>
+
+<div class="home-separator2"></div>
+
+<%= render 'testimonials' %>
+
+<div class="home-separator3"></div>
+
+<%= render 'testimonials' %>

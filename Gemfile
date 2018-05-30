@@ -36,3 +36,6 @@ gem 'devise'
 
 # Add gem pundit for authorization
 gem 'pundit'
+
+# Add gem geocoder
+gem 'geocoder'

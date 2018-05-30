@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2018_05_29_170754) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +27,9 @@ ActiveRecord::Schema.define(version: 2018_05_29_170754) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "owner_id"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "address"
     t.index ["owner_id"], name: "index_chickens_gangs_on_owner_id"
   end
 
@@ -69,6 +73,7 @@ ActiveRecord::Schema.define(version: 2018_05_29_170754) do
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
     t.string "photo"
+
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

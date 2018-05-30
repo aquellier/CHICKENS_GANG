@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row text-center">
+
+    <div class="col-sm-3 offset-sm-3">
+
+    <%= simple_form_for [@chickens_gang, @renting] do |f| %>
+      <%= f.input :start_date, as: :string %>
+      <%= f.input :end_date, as: :string %>
+      <%= f.button :submit, 'Book now!' %>
+    <% end %>
+
+    </div>
+
+  </div>
+  <%= link_to "Back", @chickens_gang %>
+
+</div>
