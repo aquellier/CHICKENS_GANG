@@ -1,18 +1,17 @@
-<div class="container">
+<div class="big-wrapper">
 
-<div class="results-container">
-  <h1>Available Chickens Gangs</h1>
+  <div class="results-container">
+    <h1>Available Chickens Gangs</h1>
 
-  <p> Please click on a Chicken Gang for more information.</p>
+    <p> Please click on a Chicken Gang for more information.</p>
 
     <div class="row">
       <% @chickens_gangs.each do |chickensgang| %>
-
-      <%= render "card", chickensgang: chickensgang %>
+        <%= render "card", chickensgang: chickensgang %>
       <% end %>
     </div>
- </div>
+  </div>
   <div id="map" data-markers="<%= @markers.to_json %>">
   </div>
-  
+
 </div>

@@ -1,33 +1,43 @@
-    <div class="col-xs-12 col-sm-6">
+<div class="col-xs-12 col-sm-6 col-md-4">
+  <div class="card">
 
-      <% if !chickensgang.photo? %>
+    <!-- If else statement to upload the picture of the user or the default picture -->
+    <% if !chickensgang.photo? %>
+      <div class="card-picture"
+      style="background-image:
+      url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0yiRaRpABimHCHMw4cXVZKYwK0YjRhGJydn7hzi12WaM_4XknfQ')"></div>
+    <% else %>
+      <div class="card-picture"
+      style="background-image:
+      url('<%= cl_image_path chickensgang.photo, crop: :fill %>')"></div>
+    <% end %>
 
-      <div class="card"
-      style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-      url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0yiRaRpABimHCHMw4cXVZKYwK0YjRhGJydn7hzi12WaM_4XknfQ')">
-
-      <% else %>
-
-      <div class="card"
-      style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-      url('<%= cl_image_path chickensgang.photo, height: 175, crop: :fill %>')">
-      <% end %>
-
-      <div class="card-category"><%= chickensgang.breed %></div>
-      <div class="card-description">
-        <h2><%= chickensgang.gang_name %></h2>
-        <p>Capacity: <%= chickensgang.capacity %></p>
-        <p>Price: <%= chickensgang.price %></p>
+    <!-- Section card-body containing name, breed, capacity and avatar of the farmer -->
+      <div class="card-body">
+        <div class="card-description">
+          <h2><%= chickensgang.gang_name %></h2>
+          <h6><%= chickensgang.breed %></h6>
+          <div>
+            <p>
+              <% chickensgang.capacity.times do %>
+                <%= image_tag "https://visuels.l214.com/animaux/poules/oeufs/oeuf-detoure.png", width: 10, height:15  %>
+              <% end %>
+              per day
+            </p>
+            <h4><%= chickensgang.price.round(1)%>€</h4>
+          </div>
+        </div>
+        <% if chickensgang.owner.photo.model[:photo] != "https://kitt.lewagon.com/placeholder/users/gittelo"  %>
+        <%= cl_image_tag chickensgang.owner.photo, width: 150, height: 150, crop: :thumb, gravity: :face, class: "avatar card-user" %>
+        <% else %>
+        <img class="card-user avatar" src="https://kitt.lewagon.com/placeholder/users/gittelo">
+        <% end %>
       </div>
-      <% if chickensgang.owner.photo.model[:photo] != "https://kitt.lewagon.com/placeholder/users/gittelo"  %>
-      <%= cl_image_tag chickensgang.owner.photo, width: 150, height: 150, crop: :thumb, gravity: :face, class: " avatar card-user" %>
-      <% else %>
-      <img class="card-user avatar" src="https://kitt.lewagon.com/placeholder/users/gittelo">
-      <% end %>
-      <div class="link">
-        <%= link_to 'View more information', chickens_gang_path(chickensgang) %>
-      </div>
-    </div>
+
   </div>
+</div>
 
 
+<!--       <div class="link">
+        <%#= link_to 'View more information', chickens_gang_path(chickensgang) %>
+      </div> -->
