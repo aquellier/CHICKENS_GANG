@@ -64,6 +64,7 @@ class ChickensGangsController < ApplicationController
     @my_chicken_gangs = current_user.chickens_gangs
     @all_rentings = Renting.all
     authorize @all_rentings
+  end
 
   def my_bookings
     @my_bookings = current_user.rentings
