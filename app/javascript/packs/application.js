@@ -1,5 +1,6 @@
 import "bootstrap";
 import './application.css';
+//= require bootstrap-modal
 
 import { loadDynamicBannerText } from '../components/banner';
 const homePage = document.querySelector('.pages.home');
