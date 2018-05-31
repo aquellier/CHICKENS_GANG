@@ -16,6 +16,7 @@
       <%= link_to "More about breeds", "#", class: "navbar-wagon-item navbar-wagon-link" %>|
       <% if current_user.chickens_gangs == [] %>
         <%= link_to "Become a farmer", farmers_path, class: "navbar-wagon-item navbar-wagon-link" %>|
+        </%>|
       <% else %>
         <%= link_to "Add a chickens gang", new_chickens_gang_path, class: "navbar-wagon-item navbar-wagon-link" %>|
       <% end %>
