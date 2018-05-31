@@ -15,17 +15,11 @@ user3 = User.create!(first_name: "A3", last_name: "B3", address: "C3", email: "d
 user4 = User.create!(first_name: "A4", last_name: "B4", address: "C4", email: "diogo4@fesf.fr", password: "diogo1")
 user5 = User.create!(first_name: "A5", last_name: "B4", address: "C5", email: "diogo5@fesf.fr", password: "diogo1")
 
-ChickensGang.create!(gang_name: "Gang1", breed: "Silkie", capacity: 4, price: 10, owner_id: 1)
-ChickensGang.create!(gang_name: "Gang2", breed: "Plymouth Rock", capacity: 4, price: 10, owner_id: 2)
-ChickensGang.create!(gang_name: "Gang3", breed: "Orpington", capacity: 4, price: 10, owner_id: 2)
-ChickensGang.create!(gang_name: "Gang4", breed: "Legorne", capacity: 4, price: 10, owner_id: 2)
-ChickensGang.create!(gang_name: "Gang5", breed: "Brahma", capacity: 4, price: 10, owner_id: 2)
-
-# ChickensGang.create!(gang_name: "Gang1", breed: "Silkie", capacity: 4, price: 10, owner_id: 1, address: "Rua de Moeda 6, Lisbon" )
-# ChickensGang.create!(gang_name: "Gang2", breed: "Plymouth Rock", capacity: 4, price: 10, owner_id: 2,address: "Rua do Conde de Redondo 79, Lisbon")
-# ChickensGang.create!(gang_name: "Gang3", breed: "Orpington", capacity: 4, price: 10, owner_id: 2,address: "Cascais")
-# ChickensGang.create!(gang_name: "Gang4", breed: "Legorne", capacity: 4, price: 10, owner_id: 2,address: "Carnaxide")
-# ChickensGang.create!(gang_name: "Gang5", breed: "Brahma", capacity: 4, price: 10, owner_id: 2,address: "Viseu")
+ChickensGang.create!(gang_name: "Gang1", breed: "Silkie", capacity: 4, price: 10, owner_id: 1, address: "Rua de Moeda 6, Lisbon" )
+ChickensGang.create!(gang_name: "Gang2", breed: "Plymouth Rock", capacity: 4, price: 10, owner_id: 2,address: "Rua do Conde de Redondo 79, Lisbon")
+ChickensGang.create!(gang_name: "Gang3", breed: "Orpington", capacity: 4, price: 10, owner_id: 2,address: "Cascais")
+ChickensGang.create!(gang_name: "Gang4", breed: "Legorne", capacity: 4, price: 10, owner_id: 2,address: "Carnaxide")
+ChickensGang.create!(gang_name: "Gang5", breed: "Brahma", capacity: 4, price: 10, owner_id: 2,address: "Viseu")
 
 Renting.create!(user: User.find(1), chickens_gang: ChickensGang.find(1))
 Renting.create!(user: User.find(2), chickens_gang: ChickensGang.find(2))
