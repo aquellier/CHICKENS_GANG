@@ -56,7 +56,7 @@ class ChickensGangsController < ApplicationController
 
   def destroy
     @chickens_gang.destroy
-    redirect_to chickens_gangs_path
+    redirect_to chickens_gangs_pathx
   end
 
 
@@ -64,6 +64,7 @@ class ChickensGangsController < ApplicationController
     @my_chicken_gangs = current_user.chickens_gangs
     @all_rentings = Renting.all
     authorize @all_rentings
+  end
 
   def my_bookings
     @my_bookings = current_user.rentings
