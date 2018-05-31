@@ -1,6 +1,15 @@
-.steps {
+.message{
   display:flex;
-  justify-content: space-around;
-  margin-left: 70px;
-  margin-right: 70px;
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-top: 50px;
+  align-items: center;
+  img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.message-picture {
+  min-width: 150px;
 }
