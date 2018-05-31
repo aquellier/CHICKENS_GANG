@@ -1,5 +1,5 @@
 class ChickensGangsController < ApplicationController
-  before_action :set_chickens_gang, only: [:show, :destroy, :edit, :update, :renting]
+  before_action :set_chickens_gang, only: [:show, :destroy, :edit, :update]
   skip_before_action :authenticate_user!, only: [ :index, :show]
 
   def index
@@ -56,6 +56,12 @@ class ChickensGangsController < ApplicationController
   def destroy
     @chickens_gang.destroy
     redirect_to chickens_gangs_path
+  end
+
+  def my_chicken_gangs
+    @my_chicken_gangs = current_user.chickens_gangs
+    @all_rentings = Renting.all
+    authorize @all_rentings
   end
 
 private
