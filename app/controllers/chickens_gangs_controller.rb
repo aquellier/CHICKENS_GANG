@@ -5,11 +5,12 @@ class ChickensGangsController < ApplicationController
   def index
     @chickens_gangs = policy_scope(ChickensGang)
     if params[:query].present?
-      sql_query = "gang_name @@ :query OR breed @@ :query OR address @@ :query"
-      @chickens_gangs = ChickensGang.where(sql_query, query: "%#{params[:query]}%")
+      @chickens_gangs = ChickensGang.search_by_gang_name_and_breed_and_address(params[:query])
     else
       @chickens_gangs = ChickensGang.all
     end
+
+
     @chickens_gangs = @chickens_gangs.where.not(latitude: nil, longitude: nil)
     chickenicon = 'https://s22.postimg.cc/a3r5eegoh/chicken.png';
     @markers = @chickens_gangs.map do |chickens_gang|
