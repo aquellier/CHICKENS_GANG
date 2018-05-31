@@ -1,10 +1,7 @@
 <div class="big-wrapper">
 
   <div class="results-container">
-    <h1>Available Chickens Gangs</h1>
-
-    <p> Please click on a Chicken Gang for more information.</p>
-
+    <h1>Chickens Gangs around you</h1>
     <div class="row">
       <% @chickens_gangs.each do |chickensgang| %>
         <%= render "card", chickensgang: chickensgang %>
