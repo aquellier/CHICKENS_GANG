@@ -1,29 +1,23 @@
 class RentingPolicy < ApplicationPolicy
-
-  def index
+  def create
     true
   end
 
-  def show?
-    true
-    # user == record.owner
-  end
 
-  #def new
-    #true
-  #end
-
-  def create?
-    true
+  def new
+   true
+ end
+ def my_bookings?
+  true
   end
-
-  def my_chicken_gangs?
-    true
-  end
+    
+ def my_chicken_gangs?
+  true
+ end
 
   class Scope < Scope
-    def resolve
-      scope
-    end
+  def resolve
+    scope.all
+  end
   end
 end

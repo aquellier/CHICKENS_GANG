@@ -47,7 +47,7 @@
             <!-- If else to know if we display "My chickens gangs" or "my bookings" -->
             <li>
               <% if current_user.chickens_gangs == [] %>
-                <%= link_to farmers_path do %>
+                <%= link_to my_bookings_chickens_gangs_path do %>
                   <i class="fas fa-kiwi-bird"></i><%= t(".My rentings", default: "My rentings") %>
                 <% end %>
               <% else %>

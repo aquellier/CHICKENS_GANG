@@ -59,10 +59,15 @@ class ChickensGangsController < ApplicationController
     redirect_to chickens_gangs_path
   end
 
+
   def my_chicken_gangs
     @my_chicken_gangs = current_user.chickens_gangs
     @all_rentings = Renting.all
     authorize @all_rentings
+
+  def my_bookings
+    @my_bookings = current_user.rentings
+    authorize @my_bookings
   end
 
 private
