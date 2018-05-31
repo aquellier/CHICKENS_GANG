@@ -44,4 +44,9 @@
   margin-top: 25px;
 }
 
+.page-wrapper {
+  min-height: calc(100vh - 100px);
+  overflow: auto;
+}
+
 
