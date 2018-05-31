@@ -1,0 +1,7 @@
+<%= form_tag chickens_gangs_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a name or breed of a chicken gang"
+  %>
+<% end %>
