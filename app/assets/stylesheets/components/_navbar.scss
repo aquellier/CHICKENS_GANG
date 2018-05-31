@@ -19,6 +19,9 @@
     margin-left: 70px;
     margin-bottom: 0;
   }
+  form {
+  width: 40%;
+  }
 }
 
 /* Logo */
@@ -51,9 +54,11 @@
   color: $white-smoke;
   font-size: 14px;
   margin: 40px;
+  opacity: 0.6;
   &:hover {
   text-decoration: none;
   border-bottom: 3px solid $white-smoke;
+  opacity: 1;
   }
 }
 

@@ -3,7 +3,9 @@
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo_1.jpg", alt: "logo", class: 'avatar' %>
   <% end %>
-
+  <% if action_name == "index"%>
+    <%= render "search" %>
+  <% end %>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
@@ -11,6 +13,7 @@
 
       <!-- Links when logged in -->
       <!-- If else to know if we display "become a farmer or add a new gang" -->
+      <%= link_to "More about breeds", "#", class: "navbar-wagon-item navbar-wagon-link" %>|
       <% if current_user.chickens_gangs == [] %>
         <%= link_to "Become a farmer", farmers_path, class: "navbar-wagon-item navbar-wagon-link" %>|
       <% else %>
