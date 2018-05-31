@@ -58,6 +58,11 @@ class ChickensGangsController < ApplicationController
     redirect_to chickens_gangs_path
   end
 
+  def my_bookings
+    @my_bookings = current_user.rentings
+    authorize @my_bookings
+  end
+
 private
 
   def set_chickens_gang
