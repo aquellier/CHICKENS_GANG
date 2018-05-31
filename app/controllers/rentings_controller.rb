@@ -1,8 +1,12 @@
 class RentingsController < ApplicationController
   before_action :set_chickens_gang
 
+  def index
+    @rentings = Renting.all
+  end
+
   def show
-    @renting = Renting.find(params[:id])
+    @renting = current_user.rentings.where(state: 'paid').find(params[:id])
   end
 
   def new
@@ -10,14 +14,18 @@ class RentingsController < ApplicationController
   end
 
   def create
-    @renting = Renting.new(renting_params)
+    @renting = Order.create!(amount: chickengang.price, state: 'pending', user: current_user)
     @user = current_user.id
-    @renting.user_id = @user
     @renting.chickens_gang = @chickens_gang
     @renting.save
     redirect_to chickens_gang_renting_path(@chickens_gang, @renting)
   end
 
+def create
+  order  = Order.create!(teddy_sku: teddy.sku, amount: teddy.price, state: 'pending', user: current_user)
+
+  redirect_to new_order_payment_path(order)
+end
   private
 
   def set_chickens_gang

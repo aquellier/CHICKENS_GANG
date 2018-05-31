@@ -20,7 +20,12 @@
 
 
   <p>Total price: <%= @chickens_gang.price * days.to_i %>€</p>
-
+  <h1>Order</h1>
+  <ul>
+    <li>Status: <%= @renting.state %></li>
+    <li>Item: <%= @renting.chickensgang_id %></li>
+    <li>Amount: <%= humanized_money_with_symbol(@renting.amount) %></li>
+  <ul>
 
   <button>
     <%= link_to "Back to all Chicken Gangs",chickens_gangs_path %>

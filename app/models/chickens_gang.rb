@@ -18,8 +18,7 @@ class ChickensGang < ApplicationRecord
   validates :gang_name, presence: true, uniqueness: true
   validates :breed, presence: true
   validates :capacity, presence: true
-  validates :price, presence: true
+  monetize :price_cents
 
   mount_uploader :photo, PhotoUploader
-
 end

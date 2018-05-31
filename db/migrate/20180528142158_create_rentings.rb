@@ -5,7 +5,7 @@ class CreateRentings < ActiveRecord::Migration[5.2]
       t.references :user, foreign_key: true
       t.datetime :start_date
       t.datetime :end_date
-
+      t.monetize :amount, currency: { present: false }
       t.timestamps
     end
   end

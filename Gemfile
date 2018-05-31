@@ -42,3 +42,8 @@ gem 'geocoder'
 
 # Add gem elasticsearch
 gem 'pg_search'
+
+# Add coffee script and money rails and stripe for payment
+gem 'coffee-script'
+gem 'money-rails'
+gem 'stripe'

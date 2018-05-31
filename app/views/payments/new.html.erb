@@ -1,0 +1,18 @@
+<h1>Purchase of chickensgang <%= @renting.chickensgang_id %></h1>
+<%= form_tag renting_payments_path(@renting) do %>
+  <article>
+    <label class="amount">
+      <span>Amount: <%= humanized_money_with_symbol(@renting.amount) %></span>
+    </label>
+  </article>
+
+  <!-- # Commented for the lecture, remove comments.
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+    data-name="My chickensgang"
+    data-email="<%= current_user.email %>"
+    data-description="chickensgang <%= @renting.chickensgang_sku %>"
+    data-amount="<%= @renting.amount_cents %>"
+    data-currency="<%= @renting.amount.currency %>"></script>
+  -->
+<% end %>

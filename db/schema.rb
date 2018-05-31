@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_30_084050) do
+ActiveRecord::Schema.define(version: 2018_05_31_205342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2018_05_30_084050) do
     t.integer "capacity", null: false
     t.string "photo"
     t.integer "year_of_birth"
-    t.integer "price", null: false
+    t.integer "price"
     t.boolean "availability", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2018_05_30_084050) do
     t.float "latitude"
     t.float "longitude"
     t.string "address"
+    t.integer "price_cents", default: 0, null: false
     t.index ["owner_id"], name: "index_chickens_gangs_on_owner_id"
   end
 
@@ -37,8 +38,11 @@ ActiveRecord::Schema.define(version: 2018_05_30_084050) do
     t.bigint "user_id"
     t.datetime "start_date"
     t.datetime "end_date"
+    t.integer "amount_cents", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "state"
+    t.jsonb "payment"
     t.index ["chickens_gang_id"], name: "index_rentings_on_chickens_gang_id"
     t.index ["user_id"], name: "index_rentings_on_user_id"
   end
