@@ -41,4 +41,4 @@ gem 'pundit'
 gem 'geocoder'
 
 # Add gem elasticsearch
-gem 'searchkick', '~> 3.0'
+gem 'pg_search'
