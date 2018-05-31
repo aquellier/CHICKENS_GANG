@@ -1,57 +1,61 @@
 <div class="container">
-  <h1> <%=@chickens_gang.gang_name%></h1>
+  <div class="row">
+    <div class="col-xs-9">
 
-  <p> Breed: <%= @chickens_gang.breed %></p>
-  <p> Gang name: <%= @chickens_gang.gang_name %></p>
-  <p> Capacity: <%= @chickens_gang.capacity %></p>
-  <% if @chickens_gang.photo.present? %>
-    <p>Photo: <%= cl_image_tag @chickens_gang.photo, height: 200, crop: :fill %></p>
-  <% else %>
-    <p>Photo: <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0yiRaRpABimHCHMw4cXVZKYwK0YjRhGJydn7hzi12WaM_4XknfQ' %></p>
-  <% end %>
-  <p> Year of birth: <%= @chickens_gang.year_of_birth %></p>
-  <p> Price: <%= @chickens_gang.price %>€/day</p>
+      <h3> <%= @chickens_gang.gang_name%>
+        <% if current_user == @chickens_gang.owner  %>
+          <%= link_to edit_chickens_gang_path(@chickens_gang) do %>
+            <i class="fas fa-pencil-alt fa-xs"></i>
+          <% end %>
+          <%= link_to @chickens_gang, method: :delete, data: {confirm: 'Are you sure?'} do %>
+            <i class="fas fa-trash-alt fa-xs"></i>
+          <% end %>
+        <% end %>
+      </h3>
 
-  <p> Available:
-    <% if @chickens_gang.availability %> Yes </p>
-    <% else %> No </p>
-    <% end %>
+      <p> Breed: <%= @chickens_gang.breed %></p>
+      <p> Capacity: <%= @chickens_gang.capacity %></p>
 
-  <h4>Chickens Gang Reviews</h4>
+      <p> Year of birth: <%= @chickens_gang.year_of_birth %></p>
+      <p> Price: <%= @chickens_gang.price %>€/day</p>
 
-  <% if !@chickens_gang.reviews.empty?  %>
-    <% average = [] %>
-    <% @chickens_gang.reviews.each do |review| %>
-      <% average << review.rating  %>
-    <% end %>
-    <p> Average rating: <%= (average.reduce(:+)/average.size.to_f).round(1)  %></p>
-    <ul>
-      <% @chickens_gang.reviews.each do |review| %>
-        <li> Comment: <%=review.content%>, Rating: <%=review.rating%> </li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>This Chicken Gang has no review yet. </p>
-  <% end %>
+      <p> Available:
+        <% if @chickens_gang.availability %> Yes </p>
+        <% else %> No </p>
+        <% end %>
+    </div>
 
-  <div class="row text-center">
-    <div class="col-sm-3 offset-sm-3">
+    <div class="col-xs-3 text-center">
       <%= simple_form_for [@chickens_gang, @renting] do |f| %>
         <%= f.input :start_date, as: :string %>
         <%= f.input :end_date, as: :string %>
         <%= f.button :submit, 'Book now!', class: "btn btn-danger" %>
-    <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h4>Chickens Gang Reviews</h4>
+
+      <% if !@chickens_gang.reviews.empty?  %>
+      <% average = [] %>
+      <% @chickens_gang.reviews.each do |review| %>
+        <% average << review.rating  %>
+      <% end %>
+      <p> Average rating: <%= (average.reduce(:+)/average.size.to_f).round(1)  %></p>
+      <ul>
+        <% @chickens_gang.reviews.each do |review| %>
+          <li> Comment: <%=review.content%>, Rating: <%=review.rating%> </li>
+        <% end %>
+      </ul>
+      <% else %>
+        <p>This Chicken Gang has no review yet. </p>
+      <% end %>
     </div>
   </div>
 
 <%= link_to "Back to Chickens Gangs",chickens_gangs_path, class: "btn btn-danger" %>
-
-<% if current_user == @chickens_gang.owner  %>
-  <%= link_to "Edit",edit_chickens_gang_path(@chickens_gang), class: "btn btn-danger" %>
-  <%= link_to "Delete",@chickens_gang, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
-<% end %>
-
-<%= link_to "Add review",new_chickens_gang_review_path(@chickens_gang), class: "btn btn-danger"%>
 
 </div>
 
