@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2018_05_30_084050) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
+    t.string "photo"
     t.float "latitude"
     t.float "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true

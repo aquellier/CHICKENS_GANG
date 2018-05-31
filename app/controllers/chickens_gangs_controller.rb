@@ -5,11 +5,12 @@ class ChickensGangsController < ApplicationController
   def index
     @chickens_gangs = policy_scope(ChickensGang)
     @chickens_gangs = @chickens_gangs.where.not(latitude: nil, longitude: nil)
-
+    chickenicon = 'https://s22.postimg.cc/a3r5eegoh/chicken.png';
     @markers = @chickens_gangs.map do |chickens_gang|
       {
         lat: chickens_gang.latitude,
         lng: chickens_gang.longitude,
+        icon: chickenicon
         # infoWindow: { content: render_to_string(partial: "/chickens_gangs/map_box", locals: { chickens_gang: chickens_gang }) }
       }
     end
