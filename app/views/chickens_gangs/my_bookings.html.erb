@@ -1,0 +1,25 @@
+
+<div class="container">
+
+
+  <h1>My bookings </h1>
+  <div class="row">
+    <% @my_bookings.each do |booking| %>
+
+
+    <% chickensgang = booking.chickens_gang %>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="card">
+       <div style="background-image: url('<%= cl_image_path chickensgang.photo, height: 200, width: 200 , crop: :fill %>')"></div>
+
+       <h2><%= chickensgang.gang_name %></h2>
+       <h3><%= chickensgang.breed %></h3>
+       <p>Start Date:<%= booking.start_date.strftime('%d %b %Y') %>  </p>
+       <p>End Date: <%= booking.end_date.strftime('%d %b %Y') %> </p>
+       </div>
+    </div>
+   <% end %>
+ </div>
+</div>
+
+

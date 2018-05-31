@@ -6,5 +6,10 @@ Rails.application.routes.draw do
   resources :chickens_gangs do
     resources :rentings, only: [:show, :new, :create]
     resources :reviews, only: [:new, :create]
+    # Diogo
+    collection do
+      get :my_bookings
+    end
   end
+
 end

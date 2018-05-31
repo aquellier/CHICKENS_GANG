@@ -32,6 +32,10 @@ class ChickensGangPolicy < ApplicationPolicy
       true
     end
 
+    def my_bookings?
+      true
+    end
+
     private
 
     def user_is_owner?
