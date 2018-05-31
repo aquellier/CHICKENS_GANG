@@ -1,0 +1,35 @@
+.container-profile {
+  align-items: top;
+  width: 100%;
+  padding: 40px;
+  h2 {
+    margin: 0px;
+  }
+  }
+.edit-profile {
+  height: 90vh;
+  border-radius: 5px;
+  padding: 40px;
+  margin: 40px;
+  border: 1px solid $light-gray2;
+  overflow:auto;
+}
+
+.panel-profile {
+  height: 90vh;
+  border-radius: 5px;
+  margin: 40px;
+  background-image: url('https://s15.postimg.cc/7tdw51zu3/poule5.jpg');
+  background-size: cover !important;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  box-shadow: 5px 5px 5px gray;
+}
+
+.flexing-box {
+  display: flex;
+  justify-content: space-between;
+}
