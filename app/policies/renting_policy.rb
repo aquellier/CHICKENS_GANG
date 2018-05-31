@@ -10,6 +10,10 @@ class RentingPolicy < ApplicationPolicy
  def my_bookings?
   true
   end
+    
+ def my_chicken_gangs?
+  true
+ end
 
   class Scope < Scope
   def resolve
