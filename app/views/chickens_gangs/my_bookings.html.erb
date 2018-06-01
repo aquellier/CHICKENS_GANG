@@ -20,7 +20,7 @@
           <% if Date.today > booking.end_date %>
             <td><%= link_to "+", new_chickens_gang_review_path(booking.chickens_gang_id) %></td>
           <% else %>
-            <td style="font-size: 14px">add a review after <%= booking.end_date.strftime('%d %b %Y') %></td>
+            <td style="font-size: 14px">Review after <%= booking.end_date.strftime('%d %b %Y') %></td>
           <% end %>
         </tr>
       <% end %>

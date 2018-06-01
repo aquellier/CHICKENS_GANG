@@ -41,7 +41,7 @@
         <td><%= renting.start_date.strftime('%d %b %Y') %> to
             <%= renting.end_date.strftime('%d %b %Y') %></td>
         <% if Date.today < renting.start_date %>
-          <td>Booked</td>
+          <td style="color: yellow">Booked</td>
         <% elsif Date.today > renting.end_date %>
           <td>Closed</td>
         <% else %>
