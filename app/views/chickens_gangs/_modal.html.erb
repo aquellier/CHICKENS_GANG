@@ -31,15 +31,7 @@
             <% else %> No </p>
           <% end %>
         </div>
-        <div class="modal-booking">
 
-          <%= simple_form_for [chickensgang, @renting] do |f| %>
-            <%= f.input :start_date, as: :string %>
-            <%= f.input :end_date, as: :string %>
-            <%= f.button :submit, 'Book now!', class: "btn btn-danger" %>
-          <% end %>
-
-        </div>
       </div>
       <div class="modal-reviews">
         <h4>Chickens Gang Reviews</h4>
@@ -64,6 +56,7 @@
           <p>This Chicken Gang has no review yet. </p>
         <% end %>
       </div>
+      <%= link_to 'Chicken gang details', chickensgang %>
    </div>
   </div>
 </div>
