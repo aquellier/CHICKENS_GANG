@@ -3,6 +3,7 @@ class ChickensGangsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show]
 
   def index
+    @renting = Renting.new
     @chickens_gangs = policy_scope(ChickensGang)
     if params[:query].present?
       @chickens_gangs = ChickensGang.search_by_gang_name_and_breed_and_address(params[:query])
@@ -24,7 +25,6 @@ class ChickensGangsController < ApplicationController
   end
 
   def show
-    @renting = Renting.new
   end
 
   def new

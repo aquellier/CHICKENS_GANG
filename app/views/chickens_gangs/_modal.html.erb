@@ -1,0 +1,67 @@
+<div id="modal-<%= chickensgang.id %>" class="chicken-modal modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h1 class="modal-title text-center"><em>Chicken Gang Details</em></h1>
+      </div>
+      <div class="modal-image">
+
+        <% if !chickensgang.photo? %>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0yiRaRpABimHCHMw4cXVZKYwK0YjRhGJydn7hzi12WaM_4XknfQ">
+        <% else %>
+
+        <%= cl_image_tag chickensgang.photo, crop: :fill %>
+        <% end %>
+      </div>
+      <div class="modal-description">
+        <div class="modal-details">
+          <h4> <em><%= chickensgang.gang_name%></em></h4>
+
+          <p> Breed: <%= chickensgang.breed %></p>
+          <p> Capacity: <%= chickensgang.capacity %></p>
+
+          <p> Year of birth: <%= chickensgang.year_of_birth %></p>
+          <p> Price: <%= chickensgang.price %>€/day</p>
+
+          <p> Available:
+            <% if chickensgang.availability %> Yes </p>
+            <% else %> No </p>
+          <% end %>
+        </div>
+        <div class="modal-booking">
+
+          <%= simple_form_for [chickensgang, @renting] do |f| %>
+            <%= f.input :start_date, as: :string %>
+            <%= f.input :end_date, as: :string %>
+            <%= f.button :submit, 'Book now!', class: "btn btn-danger" %>
+          <% end %>
+
+        </div>
+      </div>
+      <div class="modal-reviews">
+        <h4>Chickens Gang Reviews</h4>
+        <% if !chickensgang.reviews.empty?  %>
+          <% average = [] %>
+          <% chickensgang.reviews.each do |review| %>
+            <% average << review.rating  %>
+          <% end %>
+          <p> Average rating: <%= (average.reduce(:+)/average.size.to_f).round(1)  %></p>
+          <ul>
+            <% chickensgang.reviews.each do |review| %>
+              <li> Comment: <%=review.content%>, Rating: <%=review.rating%> </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>This Chicken Gang has no review yet. </p>
+        <% end %>
+      </div>
+   </div>
+  </div>
+</div>
+
+
+
+
