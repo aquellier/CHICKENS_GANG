@@ -67,7 +67,7 @@ class ChickensGangsController < ApplicationController
   end
 
   def my_bookings
-    @my_bookings = current_user.rentings
+    @my_bookings = current_user.rentings.order(created_at: :desc)
     authorize @my_bookings
   end
 
