@@ -36,6 +36,7 @@
   </thead>
   <tbody>
     <% @all_rentings.each do |renting| %>
+      <% if renting.chickens_gang.owner == @current_user %>
       <tr>
         <td><%= @my_chicken_gangs.find(renting.chickens_gang_id).gang_name %></td>
         <td><%= renting.user.first_name %></td>
@@ -49,10 +50,9 @@
           <td style="color: green">Active</td>
         <% end %>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
 
 </div>
-
-<!-- gang.id == renting.chickens_gang_id -->
