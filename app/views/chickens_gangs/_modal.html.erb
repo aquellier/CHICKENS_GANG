@@ -5,16 +5,16 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h1 class="modal-title text-center"><em>Chicken Gang Details</em></h1>
-      </div>
-      <div class="modal-image">
+        <div class="modal-image">
 
-        <% if !chickensgang.photo? %>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0yiRaRpABimHCHMw4cXVZKYwK0YjRhGJydn7hzi12WaM_4XknfQ">
-        <% else %>
+          <% if !chickensgang.photo? %>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0yiRaRpABimHCHMw4cXVZKYwK0YjRhGJydn7hzi12WaM_4XknfQ">
+          <% else %>
 
-        <%= cl_image_tag chickensgang.photo, crop: :fill %>
-        <% end %>
+          <%= cl_image_tag chickensgang.photo, crop: :fill %>
+          <% end %>
+        </div>
+
       </div>
       <div class="modal-description">
         <div class="modal-details">
@@ -49,11 +49,17 @@
             <% average << review.rating  %>
           <% end %>
           <p> Average rating: <%= (average.reduce(:+)/average.size.to_f).round(1)  %></p>
-          <ul>
             <% chickensgang.reviews.each do |review| %>
-              <li> Comment: <%=review.content%>, Rating: <%=review.rating%> </li>
+              <div class="reviews">
+                  <div class="reviews-user">
+                    <h3><%=review.user.first_name%> <%=review.user.last_name%></h3>
+                  </div>
+                  <div class="reviews-body">
+                    <p><strong>123<%=review.rating%></strong></p>
+                    <p>123s<%=review.content%></p>
+                  </div>
             <% end %>
-          </ul>
+              </div>
         <% else %>
           <p>This Chicken Gang has no review yet. </p>
         <% end %>

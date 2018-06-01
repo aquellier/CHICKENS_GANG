@@ -15,17 +15,19 @@
     }
     .modal-header {
       border: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
     }
+
     .modal-image{
       border-bottom: 0.5px dotted black;
       img {
-        height: 400px;
-        width: 700px;
+        height: 300px;
+        width : 300px;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 20px;
         display:block;
-        border: 1px solid black;
       }
 
     }
@@ -35,6 +37,7 @@
       justify-content: space-around;
       align-items: center;
       border-bottom: 0.5px dotted black;
+      margin-bottom: 10px;
 
     }
     .modal-details {
@@ -44,6 +47,10 @@
     }
     .modal-reviews {
       margin-left: 20px;
+    }
+
+    .modal-reviews-header{
+      display:flex;
     }
   }
 }
