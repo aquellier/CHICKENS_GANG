@@ -11,11 +11,6 @@ if (homePage) {
 import { toggleDateInputs } from '../components/renting_form';
 toggleDateInputs();
 
-import initMap from '../components/map.js'
-import { autocomplete } from '../components/autocomplete.js'
-const mapElement = document.getElementById('map');
-initMap(mapElement);
-console.log("Hello from app/javascript/packs/application.js!");
 
 //This is to change collor when you scrool but we didn't like it!!
 //import { toggleNavbarBackground } from '../components/navbar';
