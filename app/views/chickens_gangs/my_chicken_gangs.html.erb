@@ -1,31 +1,58 @@
 <div class="container">
-
-  <h1>My Gangs</h1>
-  <table>
+  <h3>My Gangs</h3>
+  <table class="table table-bordered table-sm">
   <thead>
     <tr>
-      <th>Gang Name</th>
-      <th>Booked?</th>
-      <th>User name</th>
-      <th colspan="3"></th>
+      <th scope="col">Gang Name</th>
+      <th scope="col">Breed</th>
+      <th scope="col">Capacity</th>
+      <th scope="col">Price</th>
+      <th scope="col">More details</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @my_chicken_gangs.each do |gang| %>
-     <% @all_rentings.each do |renting| %>
+    <% @my_chicken_gangs.each do |chickengang| %>
       <tr>
-        <td><%= gang.gang_name%></td>
-        <% if gang.id == renting.chickens_gang_id %>
-          <td>Yes</td>
-        <% else %>
-          <td>No</td>
-        <% end %>
+        <td><%= chickengang.gang_name %></td>
+        <td><%= chickengang.breed %></td>
+        <td><%= chickengang.capacity %></td>
+        <td><%= chickengang.price %>€/day</td>
+        <td><%= link_to "See my gang", chickens_gang_path(chickengang) %></td>
       </tr>
-     <% end %>
     <% end %>
   </tbody>
-
-
 </table>
+
+<h3>My Bookings</h3>
+<table class="table table-bordered table-sm">
+  <thead>
+    <th>Gang Name</th>
+    <th>User</th>
+    <th>Date</th>
+    <th>Status</th>
+    <th>Manage my bookings</th>
+  </thead>
+  <tbody>
+    <% @all_rentings.each do |renting| %>
+      <tr>
+        <td><%= @my_chicken_gangs.find(renting.chickens_gang_id).gang_name %></td>
+        <td><%= renting.user.first_name %></td>
+        <td><%= renting.start_date.strftime('%d %b %Y') %> to
+            <%= renting.end_date.strftime('%d %b %Y') %></td>
+        <% if Date.today < renting.start_date %>
+          <td>Booked</td>
+        <% elsif Date.today > renting.end_date %>
+          <td>Closed</td>
+        <% else %>
+          <td>Active</td>
+        <% end %>
+        <td>(i)</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 </div>
+
+<!-- gang.id == renting.chickens_gang_id -->

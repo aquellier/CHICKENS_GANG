@@ -1,25 +1,46 @@
-
 <div class="container">
-
-
   <h1>My bookings </h1>
-  <div class="row">
-    <% @my_bookings.each do |booking| %>
-
-
-    <% chickensgang = booking.chickens_gang %>
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="card">
-    <!--    <div style="background-image: url('<%#= cl_image_path chickensgang.photo, height: 200, width: 200 , crop: :fill %>')"></div> -->
-
-       <h2><%= chickensgang.gang_name %></h2>
-       <h3><%= chickensgang.breed %></h3>
-       <p>Start Date:<%= booking.start_date.strftime('%d %b %Y') %>  </p>
-       <p>End Date: <%= booking.end_date.strftime('%d %b %Y') %> </p>
-       </div>
-    </div>
-   <% end %>
- </div>
+  <table class="table table-bordered">
+    <thead>
+      <th>Gang Name</th>
+      <th>Breed</th>
+      <th>Date</th>
+      <th>Total Price</th>
+      <th>Add a Review</th>
+    </thead>
+    <tbody>
+      <% @my_bookings.each do |booking| %>
+      <% chickensgang = booking.chickens_gang %>
+        <tr>
+          <td><%= chickensgang.gang_name %></td>
+          <td><%= chickensgang.breed %></td>
+          <td><%= booking.start_date.strftime('%d %b %Y') %> to
+              <%= booking.end_date.strftime('%d %b %Y') %></td>
+          <td><%= chickensgang.price %></td>
+          <% if Date.today > booking.end_date %>
+            <td><%= link_to "+", new_chickens_gang_review_path(booking.chickens_gang_id) %></td>
+          <% else %>
+            <td style="font-size: 14px">add a review after <%= booking.end_date.strftime('%d %b %Y') %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
 
+<!--   <div class="row">
+    <% @my_bookings.each do |booking| %>
+      <% chickensgang = booking.chickens_gang %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="card">
+         <div style="background-image: url('<%= cl_image_path chickensgang.photo, height: 200, width: 200 , crop: :fill %>')"></div>
+
+         <h2><%= chickensgang.gang_name %></h2>
+         <h3><%= chickensgang.breed %></h3>
+         <p>Start Date:<%= booking.start_date.strftime('%d %b %Y') %>  </p>
+         <p>End Date: <%= booking.end_date.strftime('%d %b %Y') %> </p>
+         </div>
+      </div>
+   <% end %>
+ </div> -->
