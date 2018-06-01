@@ -12,7 +12,7 @@
   position: relative;
   a, p {
     color: white;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: lighter;
   }
   p {
@@ -20,8 +20,12 @@
     margin-bottom: 0;
   }
   form {
-  width: 40%;
+  width: 30%;
+    .form-control {
+      font-size: 14px;
+    }
   }
+
 }
 
 /* Logo */
