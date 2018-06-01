@@ -1,13 +1,13 @@
 <div class="container">
-  <h3>My Gangs</h3>
-  <table class="table table-bordered table-sm">
+  <h4 style="text-align: center">My Gangs</h4>
+  <table class="table">
   <thead>
     <tr>
       <th scope="col">Gang Name</th>
       <th scope="col">Breed</th>
       <th scope="col">Capacity</th>
       <th scope="col">Price</th>
-      <th scope="col">More details</th>
+      <th scope="col">Manage my Gang</th>
     </tr>
   </thead>
 
@@ -16,7 +16,7 @@
       <tr>
         <td><%= chickengang.gang_name %></td>
         <td><%= chickengang.breed %></td>
-        <td><%= chickengang.capacity %></td>
+        <td><%= chickengang.capacity %> eggs/day</td>
         <td><%= chickengang.price %>€/day</td>
         <td><%= link_to "See my gang", chickens_gang_path(chickengang) %></td>
       </tr>
@@ -24,14 +24,15 @@
   </tbody>
 </table>
 
-<h3>My Bookings</h3>
-<table class="table table-bordered table-sm">
+<br>
+
+<h4 style="text-align: center">My Clients</h4>
+<table class="table">
   <thead>
     <th>Gang Name</th>
-    <th>User</th>
+    <th>Booked by</th>
     <th>Date</th>
     <th>Status</th>
-    <th>Manage my bookings</th>
   </thead>
   <tbody>
     <% @all_rentings.each do |renting| %>
@@ -43,11 +44,10 @@
         <% if Date.today < renting.start_date %>
           <td>Booked</td>
         <% elsif Date.today > renting.end_date %>
-          <td>Closed</td>
+          <td style="color: orange">Closed</td>
         <% else %>
-          <td>Active</td>
+          <td style="color: green">Active</td>
         <% end %>
-        <td>(i)</td>
       </tr>
     <% end %>
   </tbody>
