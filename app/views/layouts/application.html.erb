@@ -14,7 +14,9 @@
     <% unless action_name == "home" || action_name == "farmers" %>
       <%= render 'shared/navbar' %>
     <% end %>
+    <% unless action_name == "home" || action_name == "farmers" %>
     <div class="page-wrapper">
+    <% end %>
       <%= yield %>
     </div>
     <%= render 'shared/footer' %>
