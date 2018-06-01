@@ -56,7 +56,7 @@ class ChickensGangsController < ApplicationController
 
   def destroy
     @chickens_gang.destroy
-    redirect_to chickens_gangs_pathx
+    redirect_to chickens_gangs_path
   end
 
 
