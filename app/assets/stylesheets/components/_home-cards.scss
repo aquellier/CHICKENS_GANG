@@ -4,6 +4,11 @@
   margin: 40px;
 }
 
+ a {
+  &:hover {
+    text-decoration: none;
+  }
+}
 .home-cards {
   display: flex;
   justify-content: space-around;
