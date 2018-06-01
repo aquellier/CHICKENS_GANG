@@ -47,6 +47,9 @@
     </div>
   <% end %>
 </div>
+
+
+
 <div id="modal-<%= chickensgang.id %>" class="chicken-modal modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -54,17 +57,55 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h1 class="modal-title">Chicken Gang Details</h1>
       </div>
       <div class="modal-body">
-        <p>We need to put the show page here!</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
 
+      <% if !chickensgang.photo? %>
+        <div class="modal-picture"
+        style="background-image:
+        url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0yiRaRpABimHCHMw4cXVZKYwK0YjRhGJydn7hzi12WaM_4XknfQ')"></div>
+      <% else %>
+        <div class="modal-picture"
+        style="background-image:
+        url('<%= cl_image_path chickensgang.photo, crop: :fill %>')"></div>
+      <% end %>
+
+      <h4> <em><%= chickensgang.gang_name%></em></h4>
+
+      <p> Breed: <%= chickensgang.breed %></p>
+      <p> Capacity: <%= chickensgang.capacity %></p>
+
+      <p> Year of birth: <%= chickensgang.year_of_birth %></p>
+      <p> Price: <%= chickensgang.price %>€/day</p>
+
+      <p> Available:
+        <% if chickensgang.availability %> Yes </p>
+        <% else %> No </p>
+        <% end %>
+
+
+      <h4>Chickens Gang Reviews</h4>
+
+      <% if !chickensgang.reviews.empty?  %>
+      <% average = [] %>
+      <% chickensgang.reviews.each do |review| %>
+        <% average << review.rating  %>
+      <% end %>
+      <p> Average rating: <%= (average.reduce(:+)/average.size.to_f).round(1)  %></p>
+      <ul>
+        <% chickensgang.reviews.each do |review| %>
+          <li> Comment: <%=review.content%>, Rating: <%=review.rating%> </li>
+        <% end %>
+      </ul>
+      <% else %>
+        <p>This Chicken Gang has no review yet. </p>
+      <% end %>
+
+    </div>
   </div>
+ </div>
 </div>
+
 
 
