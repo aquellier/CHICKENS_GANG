@@ -1,8 +1,10 @@
 class ChickensGangsController < ApplicationController
   before_action :set_chickens_gang, only: [:show, :destroy, :edit, :update]
   skip_before_action :authenticate_user!, only: [ :index, :show]
+  layout "map", only: [:index]
 
   def index
+    @renting = Renting.new
     @chickens_gangs = policy_scope(ChickensGang)
     if params[:query].present?
       @chickens_gangs = ChickensGang.search_by_gang_name_and_breed_and_address(params[:query])
@@ -20,11 +22,11 @@ class ChickensGangsController < ApplicationController
         icon: chickenicon
         # infoWindow: { content: render_to_string(partial: "/chickens_gangs/map_box", locals: { chickens_gang: chickens_gang }) }
       }
+
     end
   end
 
   def show
-    @renting = Renting.new
   end
 
   def new
@@ -67,7 +69,7 @@ class ChickensGangsController < ApplicationController
   end
 
   def my_bookings
-    @my_bookings = current_user.rentings
+    @my_bookings = current_user.rentings.order(created_at: :desc)
     authorize @my_bookings
   end
 

@@ -1,6 +1,6 @@
 <div class="container">
-  <h1>My bookings </h1>
-  <table class="table table-bordered">
+  <h4 style="text-align: center">My bookings </h4>
+  <table class="table">
     <thead>
       <th>Gang Name</th>
       <th>Breed</th>
@@ -10,17 +10,30 @@
     </thead>
     <tbody>
       <% @my_bookings.each do |booking| %>
-      <% chickensgang = booking.chickens_gang %>
+        <% start_year =  booking.start_date.strftime('%Y').to_i%>
+        <% start_month =  booking.start_date.strftime('%m').to_i%>
+        <% start_day =  booking.start_date.strftime('%d').to_i%>
+        <% end_year =  booking.end_date.strftime('%Y').to_i%>
+        <% end_month =  booking.end_date.strftime('%m').to_i%>
+        <% end_day =  booking.end_date.strftime('%d').to_i%>
+
+        <% days = Date.new(end_year, end_month, end_day) -
+                  Date.new(start_year, start_month, start_day) %>
+        <% chickensgang = booking.chickens_gang %>
         <tr>
           <td><%= chickensgang.gang_name %></td>
           <td><%= chickensgang.breed %></td>
           <td><%= booking.start_date.strftime('%d %b %Y') %> to
               <%= booking.end_date.strftime('%d %b %Y') %></td>
-          <td><%= chickensgang.price %></td>
+          <td><%= chickensgang.price * days.to_i %>€</td>
           <% if Date.today > booking.end_date %>
-            <td><%= link_to "+", new_chickens_gang_review_path(booking.chickens_gang_id) %></td>
+            <% if chickensgang.reviews.count == 1 %>
+              <td>Review submited</td>
+            <% else %>
+              <td><%= link_to "+", new_chickens_gang_review_path(booking.chickens_gang_id) %></td>
+            <% end %>
           <% else %>
-            <td style="font-size: 14px">add a review after <%= booking.end_date.strftime('%d %b %Y') %></td>
+            <td style="color: grey"><em>Review after <%= booking.end_date.strftime('%d %b %Y') %></em></td>
           <% end %>
         </tr>
       <% end %>
@@ -28,19 +41,4 @@
   </table>
 </div>
 
-
-<!--   <div class="row">
-    <% @my_bookings.each do |booking| %>
-      <% chickensgang = booking.chickens_gang %>
-      <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="card">
-         <div style="background-image: url('<%= cl_image_path chickensgang.photo, height: 200, width: 200 , crop: :fill %>')"></div>
-
-         <h2><%= chickensgang.gang_name %></h2>
-         <h3><%= chickensgang.breed %></h3>
-         <p>Start Date:<%= booking.start_date.strftime('%d %b %Y') %>  </p>
-         <p>End Date: <%= booking.end_date.strftime('%d %b %Y') %> </p>
-         </div>
-      </div>
-   <% end %>
- </div> -->
+<%#= link_to "+", new_chickens_gang_review_path(booking.chickens_gang_id) %>

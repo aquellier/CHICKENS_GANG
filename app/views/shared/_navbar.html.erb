@@ -1,4 +1,4 @@
-<div class="navbar-wagon">
+<div class="navbar-wagon navbar-wagon-fixed">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo_1.jpg", alt: "logo", class: 'avatar' %>
@@ -20,8 +20,10 @@
         <%= link_to "Add a chickens gang", new_chickens_gang_path, class: "navbar-wagon-item navbar-wagon-link" %>|
       <% end %>
       <%= link_to "Messages", messages_path, class: "navbar-wagon-item navbar-wagon-link" %>
-
+    
       <p class="text-center">Welcome <br> <strong><%= current_user.first_name %></strong></p>
+      
+
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
