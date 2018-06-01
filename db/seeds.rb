@@ -9,6 +9,7 @@ Renting.destroy_all
 Review.destroy_all
 User.destroy_all
 ChickensGang.destroy_all
+=begin
 user1 = User.create!(first_name: "A", last_name: "B", address: "C", email: "diogo@fesf.fr", password: "diogo1")
 user2 = User.create!(first_name: "A2", last_name: "B2", address: "C2", email: "diogo2@fesf.fr", password: "diogo1")
 user3 = User.create!(first_name: "A3", last_name: "B3", address: "C3", email: "diogo3@fesf.fr", password: "diogo1")
@@ -32,4 +33,6 @@ Review.create!(user: User.find(2), chickens_gang: ChickensGang.find(2), rating: 
 Review.create!(user: User.find(3), chickens_gang: ChickensGang.find(3), rating: 3)
 Review.create!(user: User.find(4), chickens_gang: ChickensGang.find(4), rating: 4)
 Review.create!(user: User.find(5), chickens_gang: ChickensGang.find(5), rating: 4)
+=end
+
 
