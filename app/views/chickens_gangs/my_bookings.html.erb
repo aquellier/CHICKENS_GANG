@@ -1,6 +1,6 @@
 <div class="container">
   <h1>My bookings </h1>
-  <table class="table table-bordered table-sm">
+  <table class="table table-bordered">
     <thead>
       <th>Gang Name</th>
       <th>Breed</th>
@@ -17,10 +17,10 @@
           <td><%= booking.start_date.strftime('%d %b %Y') %> to
               <%= booking.end_date.strftime('%d %b %Y') %></td>
           <td><%= chickensgang.price %></td>
-          <% if Date.new(2001,2,3) < booking.end_date %>
+          <% if Date.today > booking.end_date %>
             <td><%= link_to "+", new_chickens_gang_review_path(booking.chickens_gang_id) %></td>
           <% else %>
-            <td>#</td>
+            <td style="font-size: 14px">add a review after <%= booking.end_date.strftime('%d %b %Y') %></td>
           <% end %>
         </tr>
       <% end %>
@@ -43,5 +43,4 @@
          </div>
       </div>
    <% end %>
- </div>
- -->
+ </div> -->
