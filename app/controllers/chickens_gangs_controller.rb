@@ -1,6 +1,7 @@
 class ChickensGangsController < ApplicationController
   before_action :set_chickens_gang, only: [:show, :destroy, :edit, :update]
   skip_before_action :authenticate_user!, only: [ :index, :show]
+  layout "map", only: [:index]
 
   def index
     @renting = Renting.new
@@ -21,6 +22,7 @@ class ChickensGangsController < ApplicationController
         icon: chickenicon
         # infoWindow: { content: render_to_string(partial: "/chickens_gangs/map_box", locals: { chickens_gang: chickens_gang }) }
       }
+
     end
   end
 

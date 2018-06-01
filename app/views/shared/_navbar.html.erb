@@ -19,10 +19,10 @@
       <% else %>
         <%= link_to "Add a chickens gang", new_chickens_gang_path, class: "navbar-wagon-item navbar-wagon-link" %>|
       <% end %>
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <div style= "padding-right: 10px">
+      <%= link_to "Messages", messages_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    
       <p class="text-center">Welcome <br> <strong><%= current_user.first_name %></strong></p>
-      </div>
+      
 
 
       <!-- Avatar with dropdown menu -->

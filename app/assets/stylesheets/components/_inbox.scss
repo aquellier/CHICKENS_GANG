@@ -1,0 +1,57 @@
+.inbox {
+  list-style: none;
+  border: 1px solid #dce0e0 ;
+  margin: 0px;
+  display: block;
+}
+.message {
+  /* Your turn to design a flexbox message */
+  margin: 0px;
+  background: white;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(220,224,244,0.4);
+}
+
+.message-name {
+  padding-left: 10px;
+  min-width: 100px;
+}
+
+.message-name p {
+  margin: 6px 0;
+}
+
+.message-body {
+  flex-grow: 1;
+  padding-left: 30px;
+  min-width: 100px;
+  font-size: 13px;
+}
+
+.message-body p {
+  margin: 6px 0;
+}
+
+.message-status {
+  padding-left: 10px;
+  font-size: 14px;
+  font-weight: bolder;
+}
+
+.gray {
+  color: rgba(0,0,0,0.4);
+}
+
+.pending {
+  color: #d3d3d3;
+}
+
+.accepted {
+  color: #0e7e12;
+}
+
+.declined {
+  color: #fc0d1c;
+}

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get'/farmers' => 'pages#farmers'
   get'/chickens_breeds' => 'pages#chickens_breeds'
   get'/profile' => 'pages#profile'
+  get'/messages' => 'pages#messages'
   #get "project/new_release" => 'project#new_release', :as => :new_release
   resources :chickens_gangs do
     resources :rentings, only: [:show, :new, :create]
