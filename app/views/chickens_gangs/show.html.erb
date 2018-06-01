@@ -25,6 +25,8 @@
         <% end %>
     </div>
 
+
+
   <div class="row">
     <div class="col-xs-12">
       <h4>Chickens Gang Reviews</h4>
@@ -50,4 +52,13 @@
 
 </div>
 
+ <div class="modal-booking">
+
+          <%= simple_form_for [@chickens_gang, @renting] do |f| %>
+            <%= f.input :start_date, as: :string %>
+            <%= f.input :end_date, as: :string %>
+            <%= f.button :submit, 'Book now!', class: "btn btn-danger" %>
+          <% end %>
+
+        </div>
 

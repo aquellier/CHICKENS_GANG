@@ -4,7 +4,7 @@ class ChickensGangsController < ApplicationController
   layout "map", only: [:index]
 
   def index
-    @renting = Renting.new
+
     @chickens_gangs = policy_scope(ChickensGang)
     if params[:query].present?
       @chickens_gangs = ChickensGang.search_by_gang_name_and_breed_and_address(params[:query])
@@ -27,6 +27,7 @@ class ChickensGangsController < ApplicationController
   end
 
   def show
+        @renting = Renting.new
   end
 
   def new
